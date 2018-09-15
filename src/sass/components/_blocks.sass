@@ -1,0 +1,24 @@
+// *** begin call-block *** //
+.call-block
+   display: flex
+   flex-direction: column
+   align-items: flex-start
+   &__tel
+      display: flex
+      align-items: center
+      font-size: 22px
+      color: $color2
+      span
+         margin-left: 4px
+         color: $color1
+         +f('ms900')
+      &-icon
+         +flexCenter
+         width: 30px
+         height: 30px
+         margin-right: 15px
+         background: #7f898e linear-gradient(to right, #1799ed 0%, #59bffa 100%)
+         border-radius: 50%
+         color: #fff
+         font-size: 16px
+// end call-block //

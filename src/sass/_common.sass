@@ -1,0 +1,158 @@
+body
+   position: relative
+   min-width: 320px
+   -webkit-font-smoothing: antialiased
+   -moz-osx-font-smoothing: grayscale
+   +f('ms300', 18)
+   line-height: 1.2
+   color: $color3
+   +xs
+      font-size: 16px
+   &.is-locked
+      position: fixed
+      top: 0
+      left: 0
+      right: 0
+      height: 0
+      overflow: hidden
+
+.container
+   position: relative
+   z-index: 2
+   max-width: 1140px
+   margin: 0 auto
+   padding: 0 15px
+   
+.row
+   display: flex
+   margin: 0 -15px
+
+//.main
+   overflow: hidden
+
+.section-title
+   $parent: &
+   position: relative
+   padding-bottom: 15px
+   +f('ms900', 48, 58)
+   &::after
+      position: absolute
+      bottom: 0
+      width: 100px
+      height: 3px
+      border-radius: 2px
+      content: ''
+      
+   &_white
+      color: #fff
+      &::after
+         background-color: #00bff3
+         background-image: linear-gradient(to right, #acd4fe 0%, #e6f2ff 100%)
+   &_black
+      color: $color2
+      &::after
+         background-color: #00bff3
+         background-image: linear-gradient(to right, #1799ed 0%, #59bffa 100%)
+   &_blue
+      color: $color1
+      span
+         color: $color2
+      &::after
+         background-color: #00bff3
+         background-image: linear-gradient(to right, #1799ed 0%, #59bffa 100%)
+      
+   &_center
+      text-align: center
+      &::after
+         left: calc(50% - 50px)
+   &_left
+      text-align: left
+      &::after
+         left: 0
+   &_left-center
+      padding-right: 120px
+      text-align: left
+      &::after
+         right: 0
+         bottom: 50%
+         margin-bottom: 2px
+         content: ''
+   &_full-white
+      color: #fff
+   span
+      +f('ms300')
+      #{$parent}_white &
+         color: #fff
+      #{$parent}_blue &
+         color: $color1
+         
+.title-lg
+   +f('ms900')
+   font-size: 58px
+   line-height: 62px
+   color: #fff
+         
+.title-sm
+   +f('ms900', 24, 29)
+   color: $color1
+   span
+      color: $color2
+      +f('ms500')
+   
+.btn
+   position: relative
+   display: inline-block
+   padding: 19px 30px
+   outline: 0
+   border-radius: 50px
+   transition: .3s ease-in-out
+   +f('ms900', 18, 30, 100)
+   text-transform: uppercase
+   color: #fff
+   text-shadow: 0 2px 1px rgba(31, 23, 3, 0.18)
+   box-shadow: 0 16px 15px rgba(6, 44, 69, 0.13)
+   &_yellow
+      border-radius: 35px
+      border: 1px solid #f6db2c
+      background-color: #fff
+      background-image: linear-gradient(to top, #f5ac0f 0%, #ffeb3e 100%)
+   &_blue
+      border-radius: 35px
+      border: 1px solid #71cbff
+      background-color: #ffffff
+      background-image: linear-gradient(to top, #1799ed 0%, #59bffa 100%)
+   &_fluid
+      width: 100%
+   &_md
+      min-width: 400px
+   
+.dashed-link
+   +f('ms300', 16, null, 50)
+   color: #5c6164
+   border-bottom: 1px dashed rgba(#2290ca, .7)
+   transition: .3s ease-in-out
+   &:hover
+      border-bottom-color: transparent
+
+.circle-decor
+   position: absolute
+   pointer-events: none
+
+.has-grad-bg
+   position: relative
+   +cover
+   &::after
+      +coverdiv
+      background-image: linear-gradient(to right, #1c9bed, #57bef9)
+      opacity: .8
+      pointer-events: none
+      content: ''
+
+.has-striped-bg
+   position: relative
+   background-image: linear-gradient(to top, #e3ebf6 0%, #f0f6f9 100%)
+   &::after
+      +coverdiv
+      z-index: 1
+      background-image: repeating-linear-gradient(45deg, transparent, #fbfbfb 1px, #fbfbfb 1px, #fbfbfb 4px)
+      content: ''
