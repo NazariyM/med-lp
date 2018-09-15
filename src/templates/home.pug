@@ -278,5 +278,35 @@ block content
 					+e.IMG.bg-img(src='img/bg/guarantees_bg-img.png' alt='image')
 		//end guarantees
 
+		//begin testimonials
+		+b.SECTION.testimonials.has-grad-bg
+			+e.container.container
+				+e.H2.title.section-title._white._center Отзывы клиентов о нашей работе
 
+				+e.slider.slider.js-testimonials-slider
+					-i = 0
+					while i < 3
+						+e.item
+							+e.item-content
+								+e.item-img-wrap
+									+e.IMG(src='img/content/client-1.jpg' alt='image')
+								+e.P.item-text Заказала справку на сайте spravka-gai.su и уже на следующий день получила ее с доставкой на дом. Хочу выразить благодарность за оперативность и качественно проделанную работу! Теперь буду рекомендовать вас друзьям и знакомым!
+							+e.H6.item-title Анастасия,
+								span г. Москва
+						+e.item
+							+e.item-content
+								+e.item-img-wrap
+									+e.IMG(src='img/content/client-1.jpg' alt='image')
+								+e.P.item-text Начала сомневался - покупать справку или получить ее самостоя-тельно. В итоге все-таки решил купить на сайте и не пожалел! Документ был оформлен за сутки и не вызвал сомнений в ГИБДД
+							+e.H6.item-title Ксюша,
+								span г. Москва
+						+e.item
+							+e.item-content
+								+e.item-img-wrap
+									+e.IMG(src='img/content/client-2.jpg' alt='image')
+								+e.P.item-text На свой страх и риск заказала справку в ГАИ онлайн на сайте, но как выяснилось - беспокоиться было не о чем! Справка сделана качест-венно — в ГАИ ее приняли «на ура», поэтому впредь буду обращаться только к вам!
+							+e.H6.item-title Александр,
+								span г. Москва
+						-i++
+		//end testimonials
 	//end main

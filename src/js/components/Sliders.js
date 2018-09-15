@@ -1,34 +1,39 @@
 import 'slick-carousel';
-import { svgIcon } from '../_helpers';
 
-class Sliders {
-  constructor() {
-    this.$slider = $('.js-slider');
-
-    const iconLeft = svgIcon('sld-arr-l');
-    const iconRight = svgIcon('sld-arr-r');
+class Slider {
+  constructor({ el= '.js-slider', showCount = 1, scrollCount = 1, ...opts } = {}) {
+    this.$slider = $(el);
+    this.showCount = showCount;
+    this.scrollCount = scrollCount;
+    this.arrows = opts.arrows || false;
+    this.dots = opts.dots || true;
+    this.dotsClass = opts.dotsClass || 'slider-dots';
+    this.responsive = opts.responsive;
+    this.function = opts.function || false;
 
     this.defaultOptions = {
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      dots: false,
-      infinite: true,
+      slidesToShow: this.showCount,
+      slidesToScroll: this.scrollCount,
+      infinite: false,
       speed: 800,
       useTransform: true,
       adaptiveHeight: true,
       accessibility: false,
       swipe: true,
-      arrows: true,
-      prevArrow: `<button type="button" class="slider-btn slider-btn_prev">${iconLeft}</button>`,
-      nextArrow: `<button type="button" class="slider-btn slider-btn_next">${iconRight}</button>`,
-      rows: 0
+      arrows: this.arrows,
+      dots: this.dots,
+      dotsClass: this.dotsClass,
+      rows: 0,
+      responsive: this.responsive
     };
 
-    this.init();
+    if (this.$slider.length) this.init();
   }
 
   init() {
-    if (this.$slider.length) this.initSlider();
+    this.initSlider();
+    if (typeof this.function !== 'function') return;
+    this.function();
   }
 
   initSlider() {
@@ -36,4 +41,28 @@ class Sliders {
   }
 }
 
-export default new Sliders();
+export default new Slider();
+
+const testimonialsSld = new Slider({
+  el: '.js-testimonials-slider',
+  showCount: 3,
+  scrollCount: 3,
+  resposnive: [
+    {
+      breakpoint: 1199,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 767,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ],
+  function() {
+  }
+});
