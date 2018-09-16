@@ -14,7 +14,7 @@ block content
 			+e.container.container
 				+e.content
 					+e.H1.title.title-lg Водительские медицинскиесправки для ГАИ и ГИБДД
-					+e.FORM.form.form(action='#!' method='POST')
+					+e.FORM.form.js-form(action='#!' method='POST')
 						+e.form-inner
 							+e.H4.form-title.title-sm
 								span ОСТАВИТЬ ЗАЯВКУ НА
@@ -31,8 +31,10 @@ block content
 										+e.icon
 											+i('phone')
 										+e.INPUT.input(type='text' name='' placeholder='Ваш телефон' required)
-						+e.form-row
-							+e.INPUT.form-submit.btn._yellow._md(type='submit' value='Отправить заявку')
+						+e.form-actions
+							+b.LABEL.form-submit.btn._yellow._md
+								span Отправить заявку
+								+e.INPUT(type='submit' value='')
 							+b.captcha
 				+e.IMG.img(src='img/other/screen_girl.png' alt='image')
 		//end screen
@@ -195,7 +197,7 @@ block content
 					+e.info
 						+e.P.info-text Мы доставляем справки БЕСПЛАТНО в любой район Москвы в пределах МКАД. Возможна курьерская доставка и за пределы МКАД по предварительной договоренности.
 						+e.A.info-tel(href='tel:+74954812205') +7(495) 481-22-05
-					+e.BUTTON.info-btn.btn._yellow._md(type='button') Заказать звонок
+					+e.BUTTON.info-btn.btn._yellow._md(type='button'): span Заказать звонок
 		//end delivery
 
 		//begin work
@@ -274,7 +276,7 @@ block content
 						each item in guaranteesList
 							+quaranteesItem(item)
 
-					+e.BUTTON.order-btn.btn._yellow._md(type='button') Заказать
+					+e.BUTTON.request-section-btn.btn._yellow._md(type='button'): span Заказать
 					+e.IMG.bg-img(src='img/bg/guarantees_bg-img.png' alt='image')
 		//end guarantees
 
@@ -285,7 +287,7 @@ block content
 
 				+e.slider.slider.js-testimonials-slider
 					-i = 0
-					while i < 3
+					while i < 4
 						+e.item
 							+e.item-content
 								+e.item-img-wrap
@@ -309,4 +311,110 @@ block content
 								span г. Москва
 						-i++
 		//end testimonials
+
+		//begin partners
+		+b.SECTION.partners.has-striped-bg
+			+e.container.container
+				+e.H2.title.section-title._black._center Наши партнеры
+				+e.slider.slider.js-partners-slider
+					-i = 0
+					while i < 4
+						-img = 0
+						while img < 5
+							+e.item
+								+e.A.item-img-wrap(href='#!' target='_blank')
+									+e.IMG(src=`img/content/partner-${img + 1}.png` alt='image')
+							-img++
+						-i++
+		//end partners
+			
+		//begin request-section
+		+b.SECTION.request-section.has-grad-bg
+			+e.container.container
+				+e.content
+					+e.H2.title.section-title._white._left-center Оформите заявку
+						span прямо сейчас
+					+b.request
+						+e.FORM.form.js-form(action='#!' method='POST')
+							+e.form-inner
+								+e.form-row.row
+									+b.form-field.request__form-field
+										+e.LABEL
+											+e.icon
+												+i('account')
+											+e.INPUT.input(type='text' name='' placeholder='ФИО' required)
+									+b.form-field.request__form-field
+										+e.LABEL
+											+e.icon
+												+i('phone')
+											+e.INPUT.input(type='text' name='' placeholder='Ваш телефон' required)
+								+e.form-row.row
+									+b.form-field.request__form-field
+										+e.LABEL
+											+e.icon
+												+i('calendar-note')
+											+e.INPUT.input(type='text' name='' placeholder='Дата рождения' required)
+									+b.form-field.request__form-field
+										+e.LABEL
+											+e.icon
+												+i('pin-account')
+											+e.INPUT.input(type='text' name='' placeholder='Адрес регистрации' required)
+								+e.form-row.row
+									+b.form-field.request__form-field
+										+e.LABEL
+											+e.icon
+												+i('accounts-list-alt')
+											+e.INPUT.input(type='text' name='' placeholder='Паспортные данные' required)
+									+b.form-field.request__form-field._ask
+										+b.form-ask
+											+e.SPAN.text Вы носите очки?
+											+e.choice
+												+e.LABEL.choice-item
+													+b.INPUT(type='radio' value='Да' name='носите очки' checked)
+													+e.choice-visual
+													+e.SPAN.choice-text Да
+												+e.LABEL.choice-item
+													+b.INPUT(type='radio' value='Нет' name='носите очки')
+													+e.choice-visual
+													+e.SPAN.choice-text Нет
+								+e.form-row.row
+									.form-field.request__form-field.request__form-field_upload.file-block
+										label.file-block__add-btn
+											+i('local-printshop')
+											span Прикрепить скан паспорта
+											input(type='file' accept='image/*')
+										button.file-block__remove-btn(type='button')
+											+svg('remove')
+											span Удалить файл
+										.file-block__name-field
+
+							+e.form-actions
+								+b.LABEL.form-submit.btn._yellow._md
+									span Отправить заявку
+									+e.INPUT(type='submit' value='')
+								+b.captcha
+
+				+e.bg-img(style='background-image: url(img/bg/web-nurse.png)')
+		//end request-section
+			
+		//begin contact
+		+b.SECTION.contact
+			+e.container.container
+				+e.info
+					+e.H3.info-title.section-title._black._no-decor
+						span Наши
+						= ' '
+						| контакты
+					+e.info-inner
+						+e.ADDRESS.info-address
+							+i('pin-drop contact__info-icon')
+							| Москва,
+							br
+							| ул. Волхонка 9, офис 12
+						+e.A.info-tel(href='tel:+74954812205')
+							+i('phone contact__info-icon')
+							| +7(495) 481-22-05
+					+e.BUTTON.info-btn.btn._yellow._fluid(type='button'): span Заказать звонок
+			+e.map(data-zoom='18' data-center-lat='55.747089' data-center-lng='37.607595' data-marker-lat='55.747089' data-marker-lng='37.607595' data-marker-icon='img/other/map-marker.png')
+		//end contact
 	//end main
