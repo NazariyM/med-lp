@@ -1,12 +1,11 @@
 body
-   position: relative
    min-width: 320px
-   -webkit-font-smoothing: antialiased
-   -moz-osx-font-smoothing: grayscale
+   //-webkit-font-smoothing: antialiased
+   //-moz-osx-font-smoothing: grayscale
    +f('ms300', 18)
    line-height: 1.2
    color: $color3
-   +xs
+   +sm
       font-size: 16px
    &.is-locked
       position: fixed
@@ -27,17 +26,23 @@ body
    display: flex
    margin: 0 -15px
 
-//.main
-   overflow: hidden
+.main
+   position: relative
+   margin: 90px 0 0
+   +xs
+      margin: 70px 0 0
 
 .section-title
    $parent: &
    position: relative
-   padding-bottom: 15px
+   padding-bottom: 17px
    +f('ms900', 48, 58)
+   +md
+      font-size: 38px
+      line-height: 44px
    &::after
       position: absolute
-      bottom: 0
+      bottom: 5px
       width: 100px
       height: 3px
       border-radius: 2px
@@ -68,7 +73,7 @@ body
    &_left
       text-align: left
       &::after
-         left: 0
+         left: 7px
    &_left-center
       padding-right: 120px
       padding-bottom: 0
@@ -94,10 +99,17 @@ body
    font-size: 58px
    line-height: 62px
    color: #fff
+   +md
+      font-size: 42px
+      line-height: 50px
+   +xs
+      font-size: 38px
+      line-height: 46px
          
 .title-sm
    +f('ms900', 24, 29)
    color: $color1
+   
    span
       color: $color2
       +f('ms500')
@@ -116,6 +128,9 @@ body
    box-shadow: 0 16px 15px rgba(6, 44, 69, 0.13)
    overflow: hidden
    cursor: pointer
+   +xs
+      padding: 12px 15px
+      font-size: 16px
    &::after
       position: absolute
       top: -2px
@@ -145,6 +160,12 @@ body
       width: 100%
    &_md
       min-width: 400px
+      +xs
+         display: block
+         min-width: 0
+         width: 100%
+         max-width: 320px
+         margin: 0 auto
    
 .dashed-link
    +f('ms300', 16, null, 50)
@@ -156,17 +177,23 @@ body
 
 .circle-decor
    position: absolute
+   z-index: 2
    pointer-events: none
 
-.has-grad-bg
-   position: relative
+.has-cover-bg
    +cover
-   &::after
+   
+.has-grad
+   position: relative
+   &__bg
+      +cover
       +coverdiv
-      background-image: linear-gradient(to right, #1c9bed 0%, #57bef9 100%)
-      opacity: .8
-      pointer-events: none
-      content: ''
+      &::after
+         +coverdiv
+         background-image: linear-gradient(to right, #1c9bed 0%, #57bef9 100%)
+         opacity: .8
+         pointer-events: none
+         content: ''
 
 .has-striped-bg
    position: relative

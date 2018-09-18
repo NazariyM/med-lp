@@ -10,8 +10,8 @@ class Header {
 	constructor() {
 		this.body = document.querySelector('body');
 		this.header = document.querySelector('.header');
-		this.nav = this.header.querySelector('.header__nav');
-		this.navBtn = this.header.querySelector('.header__nav-btn');
+		this.nav = this.header.querySelector('.nav_header');
+		this.navBtn = this.header.querySelector('.nav-btn');
 		this.scrollTop = 0;
 
 		this.init();
@@ -74,14 +74,8 @@ class Header {
 
   initScroll() {
 		const _this = this;
-    const offsetTop = Resp.isDesk ? 70 : 60;
-    const $logo = $('.header__logo');
-    const $link = $header.find('.header__nav-list').find('a');
-
-    $logo.on('click', function (e) {
-    	e.preventDefault();
-      $scrolledElements.animate({scrollTop: $body.offset().top }, 1500);
-    });
+    const offsetTop = Resp.isDesk ? 100 : 70;
+    const $link = $header.find('.nav_header').find('a');
 
     $link.on('click', function (e) {
       e.preventDefault();

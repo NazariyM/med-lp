@@ -160,7 +160,7 @@ class Contact {
       const icon = {
         url: markerIcon
 
-        // scaledSize: new google.maps.Size(50, 50)
+        // scaledSize: new google.maps.Size(44, 68)
       };
 
       const marker = new google.maps.Marker({

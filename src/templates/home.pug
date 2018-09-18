@@ -6,36 +6,39 @@ block variables
 block content
 
 	//begin main
-	main.main
+	.main
 		//begin screen
-		+b.SECTION.screen.has-grad-bg(style='background-image: url(img/bg/screen_bg.jpg)')
-			+e.IMG.circle-img._l.circle-decor(src='img/decor/screen_circle-l.png' alt='image')
-			+e.IMG.circle-img._r.circle-decor(src='img/decor/screen_circle-r.png' alt='image')
+		+b.SECTION.screen.has-grad
+			+e.grad-bg.has-grad__bg(style='background-image: url(img/bg/screen_bg.jpg)')
+			+e.IMG.circle-img._l.circle-decor(src='img/decor/circle-decor_white.svg' alt='image')
+			+e.IMG.circle-img._r.circle-decor(src='img/decor/circle-decor_white.svg' alt='image')
 			+e.container.container
 				+e.content
-					+e.H1.title.title-lg Водительские медицинскиесправки для ГАИ и ГИБДД
-					+e.FORM.form.js-form(action='#!' method='POST')
+					+e.H1.title.title-lg Водительские медицинские справки для ГАИ и ГИБДД
+					+e.FORM.form.js-form(action='mail.php' method='POST')
 						+e.form-inner
 							+e.H4.form-title.title-sm
 								span ОСТАВИТЬ ЗАЯВКУ НА
 								= ' '
 								| МЕДСПРАВКУ:
-							+e.row.row
+							+e.form-row.row
 								+b.form-field.screen__form-field
 									+e.LABEL
 										+e.icon
 											+i('account')
-										+e.INPUT.input(type='text' name='' placeholder='Ваше имя' required)
+										+e.INPUT.input.js-input(type='text' name='name' placeholder='Ваше имя' required)
 								+b.form-field.screen__form-field
 									+e.LABEL
 										+e.icon
 											+i('phone')
-										+e.INPUT.input(type='text' name='' placeholder='Ваш телефон' required)
+										+e.INPUT.input.js-tel-input.js-input(type='text' name='phone' placeholder='Ваш телефон' required)
 						+e.form-actions
-							+b.LABEL.form-submit.btn._yellow._md
+							+b.LABEL.form-submit.screen__form-submit.btn._yellow._md
 								span Отправить заявку
 								+e.INPUT(type='submit' value='')
 							+b.captcha
+								+e.field
+								+e.INPUT(type='text' name='' placeholder='Введите код' required)
 				+e.IMG.img(src='img/other/screen_girl.png' alt='image')
 		//end screen
 
@@ -56,7 +59,7 @@ block content
 		//end promo
 
 		//begin services
-		+b.SECTION.services.has-striped-bg
+		+b.SECTION.services#services.has-striped-bg
 			+e.container.container
 				+e.H2.title.section-title._black._center
 					span Услуги и
@@ -76,7 +79,7 @@ block content
 						}, {
 						cardioImg: true,
 						label: ['+ ЭЭГ', '+ ПНД', '+ НД'],
-						price: '4 500',
+						price: '5 500',
 						title: 'Справка + ПНД + НД + ЭЭГ',
 						text: 'Электроэнцефалограмма требуется для прав кроме кат. А и В'
 						}]
@@ -103,14 +106,14 @@ block content
 									+e.item-descr
 										+e.H5.item-title= item.title
 										p= item.text
-								+btn('b', 'оформить', '_blue _fluid services__item-btn')
+								+btn('b', 'оформить', '_blue _fluid services__item-btn', 'request-popup')
 					each item in servicesList
 						+servItem(item)
-				+e.IMG.circle-decor.circle-decor(src='img/decor/services_cirlce.png' alt='image')
+			+e.IMG.circle-decor.circle-decor(src='img/decor/circle-decor_blue.svg' alt='image')
 		//end services
 
 		//begin pros
-		+b.SECTION.pros.has-grad-bg
+		+b.SECTION.pros#pros.has-cover-bg(style='background-image: url(img/bg/pros_bg.jpg)')
 			+e.container.container
 				+e.H2.title.section-title._white._center
 					span Плюсы
@@ -143,8 +146,6 @@ block content
 								+e.P.item-descr= item.descr
 					each item in prosList
 						+prosItem(item)
-			+e.IMG.bg-img._l(src='img/other/physician-referrals.jpg' alt='image')
-			+e.IMG.bg-img._r(src='img/other/health-insurance.jpg' alt='image')
 		//end pros
 
 		//begin reasons
@@ -187,21 +188,26 @@ block content
 		//end reasons
 
 		//begin delivery
-		+b.SECTION.delivery.has-grad-bg(style='background-image: url(img/bg/delivery_bg.jpg)')
+		+b.SECTION.delivery.has-cover-bg(style='background-image: url(img/bg/delivery_bg.jpg)')
 			+e.bg-img(style='background-image: url(img/bg/delivery_bg-img.png)')
+			+e.IMG.circle-img.circle-decor(src='img/decor/circle-decor_white.svg' alt='image')
 			+e.container.container
 				+e.content
 					+e.H2.title.section-title._white._left
 						span Оформим сегодня -
+						= ' '
 						| доставим завтра!
 					+e.info
-						+e.P.info-text Мы доставляем справки БЕСПЛАТНО в любой район Москвы в пределах МКАД. Возможна курьерская доставка и за пределы МКАД по предварительной договоренности.
+						+e.P.info-text Мы доставляем справки БЕСПЛАТНО в любой район Москвы в пределах
+							br
+							| МКАД. Возможна курьерская доставка и за пределы МКАД по предварительной договоренности.
 						+e.A.info-tel(href='tel:+74954812205') +7(495) 481-22-05
-					+e.BUTTON.info-btn.btn._yellow._md(type='button'): span Заказать звонок
+					+e.BUTTON.info-btn.btn._yellow._md(type='button' data-popup-target="call-popup"): span Заказать звонок
 		//end delivery
 
 		//begin work
 		+b.SECTION.work.has-striped-bg#work
+			+e.IMG.circle-img.circle-decor(src='img/decor/circle-decor_blue.svg' alt='image')
 			+e.container.container
 				+e.H2.title.section-title._black._center Как мы работаем
 					span - от заявки до заказа
@@ -246,7 +252,8 @@ block content
 		//end work
 
 		//begin guarantees
-		+b.SECTION.guarantees#guarantees(style='background-image: url(img/bg/guarantees_bg.jpg)')
+		+b.SECTION.guarantees#guarantees.has-cover-bg(style='background-image: url(img/bg/guarantees_bg.jpg)')
+			+e.IMG.circle-img.circle-decor(src='img/decor/circle-decor_blue.svg' alt='image')
 			+e.container.container
 				+e.content
 					+e.H2.title.section-title._black._left-center Мы гарантируем
@@ -276,14 +283,15 @@ block content
 						each item in guaranteesList
 							+quaranteesItem(item)
 
-					+e.BUTTON.request-section-btn.btn._yellow._md(type='button'): span Заказать
-					+e.IMG.bg-img(src='img/bg/guarantees_bg-img.png' alt='image')
+					+e.BUTTON.request-section-btn.btn._yellow._md(type='button' data-popup-target="request-popup"): span Заказать
+				+e.IMG.bg-img(src='img/bg/guarantees_bg-img.png' alt='image')
 		//end guarantees
 
 		//begin testimonials
-		+b.SECTION.testimonials.has-grad-bg
+		+b.SECTION.testimonials#testimonials.has-cover-bg(style='background-image: url(img/bg/testimonials_bg.jpg)')
 			+e.container.container
-				+e.H2.title.section-title._white._center Отзывы клиентов о нашей работе
+				+e.H2.title.section-title._white._center Отзывы клиентов
+					span о нашей работе
 
 				+e.slider.slider.js-testimonials-slider
 					-i = 0
@@ -322,59 +330,60 @@ block content
 						-img = 0
 						while img < 5
 							+e.item
-								+e.A.item-img-wrap(href='#!' target='_blank')
+								+e.item-img-wrap
 									+e.IMG(src=`img/content/partner-${img + 1}.png` alt='image')
 							-img++
 						-i++
 		//end partners
 			
 		//begin request-section
-		+b.SECTION.request-section.has-grad-bg
+		+b.SECTION.request-section.has-cover-bg(style='background-image: url(img/bg/request-section_bg.jpg)')
+			+e.IMG.circle-img.circle-decor(src='img/decor/circle-decor_white.svg' alt='image')
 			+e.container.container
 				+e.content
 					+e.H2.title.section-title._white._left-center Оформите заявку
 						span прямо сейчас
 					+b.request
-						+e.FORM.form.js-form(action='#!' method='POST')
+						+e.FORM.form.js-form(action='mail.php' method='POST' enctype='multipart/form-data')
 							+e.form-inner
 								+e.form-row.row
 									+b.form-field.request__form-field
 										+e.LABEL
 											+e.icon
 												+i('account')
-											+e.INPUT.input(type='text' name='' placeholder='ФИО' required)
+											+e.INPUT.input.js-input(type='text' name='name' placeholder='ФИО' required)
 									+b.form-field.request__form-field
 										+e.LABEL
 											+e.icon
 												+i('phone')
-											+e.INPUT.input(type='text' name='' placeholder='Ваш телефон' required)
+											+e.INPUT.input.js-tel-input.js-input(type='text' name='phone' placeholder='Ваш телефон' required)
 								+e.form-row.row
 									+b.form-field.request__form-field
 										+e.LABEL
 											+e.icon
 												+i('calendar-note')
-											+e.INPUT.input(type='text' name='' placeholder='Дата рождения' required)
+											+e.INPUT.input.js-input(type='text' name='birth_date' placeholder='Дата рождения' required)
 									+b.form-field.request__form-field
 										+e.LABEL
 											+e.icon
 												+i('pin-account')
-											+e.INPUT.input(type='text' name='' placeholder='Адрес регистрации' required)
+											+e.INPUT.input.js-input(type='text' name='reg_address' placeholder='Адрес регистрации' required)
 								+e.form-row.row
 									+b.form-field.request__form-field
 										+e.LABEL
 											+e.icon
 												+i('accounts-list-alt')
-											+e.INPUT.input(type='text' name='' placeholder='Паспортные данные' required)
+											+e.INPUT.input.js-input(type='text' name='passport' placeholder='Паспортные данные' required)
 									+b.form-field.request__form-field._ask
 										+b.form-ask
 											+e.SPAN.text Вы носите очки?
 											+e.choice
 												+e.LABEL.choice-item
-													+b.INPUT(type='radio' value='Да' name='носите очки' checked)
+													+b.INPUT(type='radio' value='Да' name='glasses' checked)
 													+e.choice-visual
 													+e.SPAN.choice-text Да
 												+e.LABEL.choice-item
-													+b.INPUT(type='radio' value='Нет' name='носите очки')
+													+b.INPUT(type='radio' value='Нет' name='glasses')
 													+e.choice-visual
 													+e.SPAN.choice-text Нет
 								+e.form-row.row
@@ -382,7 +391,7 @@ block content
 										label.file-block__add-btn
 											+i('local-printshop')
 											span Прикрепить скан паспорта
-											input(type='file' accept='image/*')
+											input(type='file' accept='image/*' name='passport_scan')
 										button.file-block__remove-btn(type='button')
 											+svg('remove')
 											span Удалить файл
@@ -393,8 +402,10 @@ block content
 									span Отправить заявку
 									+e.INPUT(type='submit' value='')
 								+b.captcha
+									+e.field
+									+e.INPUT(type='text' name='' placeholder='Введите код' required)
 
-				+e.bg-img(style='background-image: url(img/bg/web-nurse.png)')
+				+e.IMG.bg-img(src='img/bg/web-nurse.png')
 		//end request-section
 			
 		//begin contact
@@ -414,7 +425,7 @@ block content
 						+e.A.info-tel(href='tel:+74954812205')
 							+i('phone contact__info-icon')
 							| +7(495) 481-22-05
-					+e.BUTTON.info-btn.btn._yellow._fluid(type='button'): span Заказать звонок
+					+e.BUTTON.info-btn.btn._yellow._fluid(type='button' data-popup-target="call-popup"): span Заказать звонок
 			+e.map(data-zoom='18' data-center-lat='55.747089' data-center-lng='37.607595' data-marker-lat='55.747089' data-marker-lng='37.607595' data-marker-icon='img/other/map-marker.png')
 		//end contact
 	//end main

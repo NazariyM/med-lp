@@ -4,11 +4,11 @@
 		+e.P.title Водительские медицинские справки
 			= ' '
 			span для ГАИ и ГИБДД
-		+b.NAV.nav.header__nav
+		+b.NAV.nav._header
 			-
 				navList = [
 				['Услуги и цены', 'services'],
-				['Почему мы', 'why-us'],
+				['Почему мы', 'pros'],
 				['Как мы работаем', 'work'],
 				['Гарантии', 'guarantees'],
 				['Отзывы', 'testimonials']
@@ -24,7 +24,7 @@
 				| 8 (800)
 				span 888 88 88
 			+e.A.link.dashed-link(href='#!' data-popup-target='call-popup') Заказать обратный звонок
-		//+e.BUTTON.nav-btn(type='button')
-			+e.SPAN.nav-btn-burger
-				+e.SPAN.nav-btn-lines
+		+b.BUTTON.nav-btn(type='button')
+			+e.SPAN.burger
+				+e.SPAN.lines
 //end header

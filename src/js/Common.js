@@ -1,8 +1,8 @@
 import objectFitImages from 'object-fit-images';
 import { $body, detectIE } from './_helpers';
 
-// import './components/Popups';
-// import './components/Header';
+import './components/Header';
+import './components/Popups';
 import './components/Form';
 import './sections/Contact';
 import './components/Sliders';
@@ -14,12 +14,12 @@ export class Common {
 
   init() {
     objectFitImages();
-    // this.addClassIE();
+    this.addClassIE();
   }
 
-  // addClassIE() {
-  //   if (detectIE()) $body.addClass('is-ie');
-  // }
+  addClassIE() {
+    if (detectIE()) $body.addClass('is-ie');
+  }
 }
 
 export default new Common();

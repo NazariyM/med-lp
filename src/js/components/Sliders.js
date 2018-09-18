@@ -1,5 +1,5 @@
 import 'slick-carousel';
-import { $window, throttle } from '../_helpers';
+import { svgIcon } from '../_helpers';
 
 class Slider {
   constructor({ el= '.js-slider', showCount = 1, scrollCount = 1, ...opts } = {}) {
@@ -13,6 +13,9 @@ class Slider {
     this.dots = opts.dots || true;
     this.dotsClass = opts.dotsClass || 'slider-dots';
 
+    const iconLeft = svgIcon('sld-arr-l');
+    const iconRight = svgIcon('sld-arr-r');
+
     this.defaultOptions = {
       slidesToShow: this.showCount,
       slidesToScroll: this.scrollCount,
@@ -23,6 +26,8 @@ class Slider {
       accessibility: false,
       swipe: true,
       arrows: this.arrows,
+      prevArrow: `<button type="button" class="slider-btn slider-btn_prev">${iconLeft}</button>`,
+      nextArrow: `<button type="button" class="slider-btn slider-btn_next">${iconRight}</button>`,
       dots: this.dots,
       dotsClass: this.dotsClass,
       rows: 0,
@@ -51,9 +56,9 @@ const testimonialsSld = new Slider({
   showCount: 3,
   scrollCount: 3,
   dotsClass: 'testimonials__slider-dots slider-dots slider-dots_white',
-  resposnive: [
+  responsive: [
     {
-      breakpoint: 1199,
+      breakpoint: 1023,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2
@@ -63,7 +68,10 @@ const testimonialsSld = new Slider({
       breakpoint: 767,
       settings: {
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        dots: false,
+        arrows: true,
+
       }
     }
   ],
@@ -71,11 +79,6 @@ const testimonialsSld = new Slider({
     const _this = this;
 
     setContentHeight();
-
-    const setOnResize = throttle(() => {
-      setContentHeight();
-    }, 0, this);
-
     function setContentHeight() {
       const contentHeights = [];
       const $content = _this.$slider.find('.testimonials__item-content');
@@ -86,8 +89,6 @@ const testimonialsSld = new Slider({
         })
         .css({ height: Math.max(...contentHeights) });
     }
-
-    $window.on('resize', setOnResize);
   }
 });
 
@@ -96,19 +97,22 @@ const partnersSld = new Slider({
   showCount: 5,
   scrollCount: 5,
   dotsClass: 'partners__slider-dots slider-dots slider-dots_blue',
-  resposnive: [
+  responsive: [
     {
-      breakpoint: 1199,
+      breakpoint: 1023,
       settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
+        slidesToShow: 4,
+        slidesToScroll: 4
       }
     },
     {
       breakpoint: 767,
       settings: {
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        dots: false,
+        arrows: true,
+        adaptiveHeight: false
       }
     }
   ]
