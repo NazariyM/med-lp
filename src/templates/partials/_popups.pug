@@ -79,6 +79,7 @@ mixin popup(el)
 								+e.INPUT(type='submit' value='')
 							+b.captcha._mod._request
 								+e.field
+									+e.IMG(src='img/other/captcha.png' alt='image')
 								+e.INPUT(type='text' name='' placeholder='Введите код' required)
 
 		when 'call-popup'
@@ -107,6 +108,7 @@ mixin popup(el)
 
 							+b.captcha._mod
 								+e.field
+									+e.IMG(src='img/other/captcha.png' alt='image')
 								+e.INPUT(type='text' name='' placeholder='Введите код' required)
 
 							+b.LABEL.form-submit.screen__form-submit.btn._yellow._fluid
